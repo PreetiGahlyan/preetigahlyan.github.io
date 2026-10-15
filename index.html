@@ -1,5 +1,326 @@
-<html>
-  <body>
-    Hola!
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PlinkyPenny — Money, learned by heart.</title>
+<meta name="description" content="Free songs that teach little kids (3–8) about saving, spending, and sharing. Join the Founding Families list.">
+
+<!-- Social share preview -->
+<meta property="og:title" content="PlinkyPenny — Money, learned by heart.">
+<meta property="og:description" content="Free songs that teach little kids about saving, spending, and sharing.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#241B3A;--plum:#6A4CC4;--plum-deep:#4B2F94;--coin:#E8A93B;
+    --mint:#1FA98C;--paper:#F6F4FB;--card:#FFFFFF;--line:#E4DEF0;--muted:#6F6685;--pink:#C97FB0;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Inter",system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px;}
+  .eyebrow{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--plum);margin:0 0 10px;}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:56px 0 10px;text-align:center;}
+  .logo{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;
+    font-size:clamp(52px,10vw,92px);line-height:.95;letter-spacing:-.025em;margin:0;}
+  .logo .o{color:var(--coin);}
+  .tagline{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;
+    font-size:clamp(20px,3vw,27px);color:var(--plum-deep);margin:10px 0 0;letter-spacing:-.01em;}
+  .promise{font-size:clamp(16px,2vw,18.5px);color:var(--ink);max-width:620px;margin:20px auto 0;}
+  .promise b{color:var(--plum-deep);font-weight:600;}
+  .agebadge{display:inline-block;font-family:"Space Mono",monospace;font-size:12px;
+    letter-spacing:.14em;color:var(--muted);border:1px solid var(--line);
+    border-radius:999px;padding:6px 14px;margin-top:16px;background:var(--card);}
+
+  .stave{width:100%;max-width:640px;height:80px;margin:24px auto 0;display:block;}
+
+  /* ---------- FORM ---------- */
+  .signup{background:var(--card);border:1px solid var(--line);border-radius:20px;
+    padding:30px 28px;margin-top:34px;box-shadow:0 4px 24px rgba(36,27,58,.05);}
+  .signup h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;
+    font-size:clamp(22px,3vw,28px);letter-spacing:-.015em;margin:0 0 8px;text-align:center;}
+  .signup .sub{text-align:center;color:var(--muted);font-size:15px;margin:0 0 22px;}
+  .row{display:flex;gap:10px;max-width:520px;margin:0 auto;}
+  input[type=email]{flex:1;padding:15px 16px;font-size:16px;font-family:inherit;
+    border:1.5px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink);outline:none;}
+  input[type=email]:focus{border-color:var(--plum);background:#fff;}
+  button{background:var(--plum);color:#fff;border:none;border-radius:12px;
+    padding:15px 26px;font-family:"Bricolage Grotesque",sans-serif;font-weight:600;
+    font-size:16px;cursor:pointer;transition:background .15s ease,transform .1s ease;white-space:nowrap;}
+  button:hover{background:var(--plum-deep);}
+  button:active{transform:translateY(1px);}
+  button:disabled{opacity:.6;cursor:default;}
+  .fineprint{text-align:center;font-size:12.5px;color:var(--muted);margin:14px 0 0;}
+  .msg{text-align:center;margin:14px 0 0;font-size:15px;font-weight:600;min-height:22px;}
+  .msg.ok{color:var(--mint);}
+  .msg.err{color:var(--pink);}
+  .perks{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin-top:20px;
+    font-size:13.5px;color:var(--muted);}
+  .perks span{display:flex;align-items:center;gap:7px;}
+  .tick{color:var(--mint);font-weight:700;}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding-top:56px;}
+  h2.sec{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;
+    font-size:clamp(23px,3.4vw,30px);letter-spacing:-.015em;margin:6px 0 18px;}
+  p{margin:0 0 14px;}
+
+  /* why */
+  .why{background:var(--plum-deep);color:#fff;border-radius:20px;padding:32px 30px;}
+  .why .eyebrow{color:#C9B8F5;}
+  .why h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(22px,3vw,28px);
+    color:#fff;margin:0 0 12px;letter-spacing:-.015em;}
+  .why p{color:#E6DEFA;margin:0 0 12px;font-size:15.5px;}
+  .why p:last-child{margin:0;}
+  .why b{color:var(--coin);font-weight:600;}
+
+  /* songs */
+  .songs{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  .song{background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:20px 22px;position:relative;overflow:hidden;}
+  .song::before{content:"";position:absolute;top:0;left:0;width:5px;height:100%;}
+  .s1::before{background:var(--coin);} .s2::before{background:var(--plum);}
+  .s3::before{background:var(--mint);} .s4::before{background:var(--pink);}
+  .song .cn{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.16em;
+    text-transform:uppercase;font-weight:700;}
+  .s1 .cn{color:var(--coin);} .s2 .cn{color:var(--plum);}
+  .s3 .cn{color:var(--mint);} .s4 .cn{color:var(--pink);}
+  .song h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:19px;margin:6px 0 6px;}
+  .song p{font-size:14.5px;color:var(--muted);margin:0;}
+  .lyricbit{font-size:14px;color:var(--plum-deep);font-style:italic;margin-top:10px;}
+
+  /* trust */
+  .trust{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .t{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;}
+  .t .ic{font-size:22px;}
+  .t h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:16.5px;margin:8px 0 6px;}
+  .t p{font-size:14px;color:var(--muted);margin:0;}
+
+  /* closing cta */
+  .closing{text-align:center;padding:56px 0 10px;}
+  .closing h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;
+    font-size:clamp(24px,3.6vw,32px);letter-spacing:-.02em;margin:0 0 10px;}
+  .closing p{color:var(--muted);max-width:520px;margin:0 auto 22px;}
+  .btn-lg{display:inline-block;background:var(--coin);color:var(--ink);text-decoration:none;
+    padding:16px 32px;border-radius:12px;font-family:"Bricolage Grotesque",sans-serif;
+    font-weight:600;font-size:17px;transition:transform .1s ease;}
+  .btn-lg:hover{transform:translateY(-1px);}
+
+  footer{margin-top:56px;padding:22px 0 40px;border-top:1px solid var(--line);
+    font-size:12.5px;color:var(--muted);font-family:"Space Mono",monospace;text-align:center;}
+
+  @media(max-width:640px){
+    .songs,.trust{grid-template-columns:1fr;}
+    .row{flex-direction:column;}
+    button{width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1 class="logo">PlinkyPenny<span class="o">.</span></h1>
+    <p class="tagline">Money, learned by heart.</p>
+    <p class="promise">Free songs that teach little kids about <b>saving, spending, and sharing</b> — long before they ever touch a card. Because kids remember almost anything if you set it to a tune.</p>
+    <span class="agebadge">MADE FOR AGES 3–8</span>
+
+    <svg class="stave" viewBox="0 0 640 80" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <g stroke="#D8D0EC" stroke-width="1.5">
+        <line x1="0" y1="16" x2="640" y2="16"/><line x1="0" y1="34" x2="640" y2="34"/>
+        <line x1="0" y1="52" x2="640" y2="52"/><line x1="0" y1="70" x2="640" y2="70"/>
+      </g>
+      <g font-family="Space Mono, monospace" font-size="12" font-weight="700">
+        <line x1="99" y1="70" x2="99" y2="8" stroke="#6A4CC4" stroke-width="2"/>
+        <circle cx="90" cy="70" r="9" fill="#E8A93B"/><text x="84" y="75" fill="#241B3A">¢</text>
+        <line x1="229" y1="52" x2="229" y2="8" stroke="#6A4CC4" stroke-width="2"/>
+        <circle cx="220" cy="52" r="9" fill="#E8A93B"/><text x="214" y="57" fill="#241B3A">¢</text>
+        <line x1="359" y1="34" x2="359" y2="8" stroke="#6A4CC4" stroke-width="2"/>
+        <circle cx="350" cy="34" r="9" fill="#E8A93B"/><text x="344" y="39" fill="#241B3A">¢</text>
+        <line x1="489" y1="16" x2="489" y2="8" stroke="#1FA98C" stroke-width="2"/>
+        <circle cx="480" cy="16" r="9" fill="#1FA98C"/><text x="475" y="21" fill="#fff">$</text>
+        <text x="505" y="20" font-size="11" fill="#1FA98C">goal!</text>
+      </g>
+    </svg>
+  </div>
+
+  <!-- SIGNUP -->
+  <div class="signup" id="join">
+    <h2>Be a Founding Family</h2>
+    <p class="sub">Get our four songs free, plus one short "money moment" to try at home each week.</p>
+
+    <form id="signupForm" novalidate>
+      <div class="row">
+        <input type="email" id="email" placeholder="your@email.com" required aria-label="Email address">
+        <button type="submit" id="submitBtn">Send me the songs</button>
+      </div>
+    </form>
+
+    <p class="msg" id="msg" role="status" aria-live="polite"></p>
+    <p class="fineprint">No spam, no ads, no tricks. Unsubscribe anytime.</p>
+
+    <div class="perks">
+      <span><span class="tick">✓</span> 4 original songs</span>
+      <span><span class="tick">✓</span> Weekly money moment</span>
+      <span><span class="tick">✓</span> Early access to the app</span>
+    </div>
+  </div>
+
+  <!-- WHY -->
+  <section>
+    <div class="why">
+      <p class="eyebrow">Why we're making this</p>
+      <h2>The money talk starts earlier than you think.</h2>
+      <p>Most parents now start talking to their kids about spending and saving <b>before age four</b> — and nine in ten want their children taught more about money than they pick up at home. But almost everything out there is built for teenagers with debit cards.</p>
+      <p>Little kids don't need a card. They need to understand that a coin saved becomes something bigger, that a need comes before a want, and that sharing feels good. <b>So we put it in songs</b> — because that's how three-year-olds learn everything else.</p>
+    </div>
+  </section>
+
+  <!-- SONGS -->
+  <section>
+    <p class="eyebrow">What you'll get</p>
+    <h2 class="sec">Four songs, four big ideas</h2>
+    <div class="songs">
+      <div class="song s1">
+        <span class="cn">Saving</span>
+        <h3>The Saving Jar</h3>
+        <p>Saving a little at a time — and the hard, wonderful art of waiting.</p>
+        <p class="lyricbit">"Penny in the jar — plink, plink, plink!"</p>
+      </div>
+      <div class="song s2">
+        <span class="cn">Wants vs. Needs</span>
+        <h3>Needs Come First</h3>
+        <p>A shout-along call-and-response. Warm bed? <strong>NEED!</strong> Trampoline? <strong>WANT!</strong></p>
+        <p class="lyricbit">"Needs come first… then wants come too!"</p>
+      </div>
+      <div class="song s3">
+        <span class="cn">Earning</span>
+        <h3>It Doesn't Grow on Trees</h3>
+        <p>Where money actually comes from — helping, effort, and a job well done.</p>
+        <p class="lyricbit">"Lend a hand, and do your best…"</p>
+      </div>
+      <div class="song s4">
+        <span class="cn">Spend · Save · Give</span>
+        <h3>Save a Little, Give a Little</h3>
+        <p>Money's three jobs, and why the giving one matters most.</p>
+        <p class="lyricbit">"Sharing what we have makes a big heart grow."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section>
+    <p class="eyebrow">Our promises to you</p>
+    <h2 class="sec">Built for kids, honest with parents</h2>
+    <div class="trust">
+      <div class="t">
+        <div class="ic">🚫</div>
+        <h3>No ads, ever</h3>
+        <p>No ads, no in-app purchases, no pressure tactics aimed at your child. Not now, not later.</p>
+      </div>
+      <div class="t">
+        <div class="ic">🎯</div>
+        <h3>One idea per song</h3>
+        <p>Every song teaches one concept clearly enough that your child can explain it back to you.</p>
+      </div>
+      <div class="t">
+        <div class="ic">🎵</div>
+        <h3>Slow and repetitive</h3>
+        <p>On purpose. Repetition is how little brains actually learn — not flashing lights and badges.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <div class="closing">
+    <h2>Help us build it.</h2>
+    <p>We're a small project, just getting started. Join early and tell us what your family actually needs — we'll shape it around you.</p>
+    <a href="#join" class="btn-lg">Get the songs, free →</a>
+  </div>
+
+  <footer>
+    PLINKYPENNY · money, learned by heart · made for little ones and the grown-ups who love them
+  </footer>
+
+</div>
+
+<script>
+/* ============================================================
+   EMAIL CAPTURE — connect your provider here.
+
+   Right now this validates and shows a success state, but does
+   NOT store the email anywhere. Before going live, do ONE of:
+
+   A) EASIEST — swap the <form> for an embed from your provider
+      (Mailchimp / ConvertKit / Buttondown / Beehiiv / Substack).
+      Paste their form code where <form id="signupForm"> sits.
+
+   B) KEEP THIS DESIGN — point the form at your provider's
+      endpoint. Uncomment the fetch() below and drop in your URL.
+      Most providers give you a plain form-post URL.
+
+   C) NO-CODE — use a Tally / Google Form endpoint the same way.
+
+   Privacy note: you are collecting PARENT emails, not children's.
+   Keep it that way — kids' data carries heavy legal obligations
+   (GDPR-K, COPPA). Never ask for a child's name, age, or photo.
+   ============================================================ */
+
+const form = document.getElementById('signupForm');
+const email = document.getElementById('email');
+const msg = document.getElementById('msg');
+const btn = document.getElementById('submitBtn');
+
+form.addEventListener('submit', async function(e){
+  e.preventDefault();
+  const val = email.value.trim();
+  const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+
+  if(!valid){
+    msg.textContent = 'That email doesn\u2019t look quite right \u2014 mind checking it?';
+    msg.className = 'msg err';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Sending\u2026';
+
+  /* --- UNCOMMENT AND ADD YOUR ENDPOINT TO GO LIVE ---
+  try {
+    await fetch('YOUR_PROVIDER_ENDPOINT_HERE', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ email: val })
+    });
+  } catch(err){
+    msg.textContent = 'Something went wrong. Please try again.';
+    msg.className = 'msg err';
+    btn.disabled = false;
+    btn.textContent = 'Send me the songs';
+    return;
+  }
+  --------------------------------------------------- */
+
+  // Placeholder success state (remove once connected above)
+  setTimeout(function(){
+    form.style.display = 'none';
+    msg.innerHTML = '\uD83C\uDFB5 You\u2019re in! Check your inbox for the songs.';
+    msg.className = 'msg ok';
+    btn.disabled = false;
+    btn.textContent = 'Send me the songs';
+  }, 600);
+});
+</script>
+
+</body>
 </html>
