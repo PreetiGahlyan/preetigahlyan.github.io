@@ -123,6 +123,15 @@
     button{width:100%;}
   }
 </style>
+<!-- MailerLite Universal -->
+<script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '2758107');
+</script>
+<!-- End MailerLite Universal -->
 </head>
 <body>
 
@@ -159,14 +168,8 @@
     <h2>Be a Founding Family</h2>
     <p class="sub">Get our four songs free, plus one short "money moment" to try at home each week.</p>
 
-    <form id="signupForm" novalidate>
-      <div class="row">
-        <input type="email" id="email" placeholder="your@email.com" required aria-label="Email address">
-        <button type="submit" id="submitBtn">Send me the songs</button>
-      </div>
-    </form>
-
-    <p class="msg" id="msg" role="status" aria-live="polite"></p>
+    <!-- MailerLite embedded form (form ID HVkL9Z, account 2758107) -->
+    <div class="ml-embedded" data-form="HVkL9Z"></div>
     <p class="fineprint">No spam, no ads, no tricks. Unsubscribe anytime.</p>
 
     <div class="perks">
@@ -253,74 +256,6 @@
   </footer>
 
 </div>
-
-<script>
-/* ============================================================
-   EMAIL CAPTURE — connect your provider here.
-
-   Right now this validates and shows a success state, but does
-   NOT store the email anywhere. Before going live, do ONE of:
-
-   A) EASIEST — swap the <form> for an embed from your provider
-      (Mailchimp / ConvertKit / Buttondown / Beehiiv / Substack).
-      Paste their form code where <form id="signupForm"> sits.
-
-   B) KEEP THIS DESIGN — point the form at your provider's
-      endpoint. Uncomment the fetch() below and drop in your URL.
-      Most providers give you a plain form-post URL.
-
-   C) NO-CODE — use a Tally / Google Form endpoint the same way.
-
-   Privacy note: you are collecting PARENT emails, not children's.
-   Keep it that way — kids' data carries heavy legal obligations
-   (GDPR-K, COPPA). Never ask for a child's name, age, or photo.
-   ============================================================ */
-
-const form = document.getElementById('signupForm');
-const email = document.getElementById('email');
-const msg = document.getElementById('msg');
-const btn = document.getElementById('submitBtn');
-
-form.addEventListener('submit', async function(e){
-  e.preventDefault();
-  const val = email.value.trim();
-  const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
-
-  if(!valid){
-    msg.textContent = 'That email doesn\u2019t look quite right \u2014 mind checking it?';
-    msg.className = 'msg err';
-    return;
-  }
-
-  btn.disabled = true;
-  btn.textContent = 'Sending\u2026';
-
-  /* --- UNCOMMENT AND ADD YOUR ENDPOINT TO GO LIVE ---
-  try {
-    await fetch('YOUR_PROVIDER_ENDPOINT_HERE', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({ email: val })
-    });
-  } catch(err){
-    msg.textContent = 'Something went wrong. Please try again.';
-    msg.className = 'msg err';
-    btn.disabled = false;
-    btn.textContent = 'Send me the songs';
-    return;
-  }
-  --------------------------------------------------- */
-
-  // Placeholder success state (remove once connected above)
-  setTimeout(function(){
-    form.style.display = 'none';
-    msg.innerHTML = '\uD83C\uDFB5 You\u2019re in! Check your inbox for the songs.';
-    msg.className = 'msg ok';
-    btn.disabled = false;
-    btn.textContent = 'Send me the songs';
-  }, 600);
-});
-</script>
 
 </body>
 </html>
