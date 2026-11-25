@@ -65,7 +65,7 @@ html,body{min-height:100%;}
 .sun{position:absolute; top:16px; right:22px; width:66px; height:66px; border-radius:50%;
   background:radial-gradient(circle at 40% 40%, #ffe08a, #ffc24d); box-shadow:0 0 0 10px rgba(255,214,110,.25);}
 /* Penny + speech */
-.host{display:flex; align-items:flex-start; gap:12px; position:relative; z-index:2;}
+.host{display:flex; align-items:flex-start; gap:12px; position:relative; z-index:2; padding-right:120px; min-height:150px;}
 .host img{width:92px; height:92px; object-fit:contain; flex:none;
   filter:drop-shadow(0 8px 10px rgba(80,50,10,.25)); animation:bob 2.4s ease-in-out infinite;}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
@@ -76,7 +76,7 @@ html,body{min-height:100%;}
 .bubble::after{content:""; position:absolute; left:-9px; top:18px; border:9px solid transparent;
   border-right-color:#fff; border-left:0;}
 /* jar badge */
-.jarwrap{position:absolute; top:14px; right:18px; width:112px; text-align:center; z-index:2;}
+.jarwrap{position:absolute; top:14px; right:18px; width:112px; text-align:center; z-index:4;}
 .jar{position:relative; width:104px; height:120px; margin:0 auto;}
 .coincount{margin-top:4px; font-weight:800; color:var(--plum-deep); font-size:1.05rem;
   background:#fff; border-radius:999px; display:inline-block; padding:2px 14px; box-shadow:0 3px 8px rgba(30,16,70,.2);}
@@ -126,6 +126,7 @@ html,body{min-height:100%;}
 @media (max-width:420px){
   .task .emoji{font-size:2.4rem;} .task .lbl{font-size:.82rem;}
   .jarwrap{width:92px;} .jar{width:88px;height:102px;} .host img{width:78px;height:78px;}
+  .host{padding-right:98px;}
 }
 @media (prefers-reduced-motion:reduce){ .host img{animation:none;} }
 </style>
